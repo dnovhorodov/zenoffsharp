@@ -14,7 +14,7 @@ mult <!> None   <*> Some 4 |> printfn "%A"
 mult <!> Some 3 <*> None   |> printfn "%A"
 
 lift mult <*> Some 3 // lift mult <*> Some 3 == mult <!> Some 3
-Option.map mult (Some 3)
+compose (Option.map mult (Some 3)) (Some 4)
 mult <!> Some 3
 mult 3 |> (lift >> compose) <| Some 4
 lift (mult 3) |> (fun f -> compose f (Some 4))
