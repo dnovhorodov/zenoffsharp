@@ -1,5 +1,5 @@
 let (<!>) = Option.map   // Option is a functor
-let lift x = Some x      // not used, but still conceptually important
+let lift x = Some x // not used, but still conceptually important
 
 let compose fOpt xOpt =
     match fOpt, xOpt with
@@ -14,6 +14,7 @@ mult <!> None   <*> Some 4 |> printfn "%A"
 mult <!> Some 3 <*> None   |> printfn "%A"
 
 lift mult <*> Some 3 // lift mult <*> Some 3 == mult <!> Some 3
+Option.map mult (Some 3)
 mult <!> Some 3
 mult 3 |> (lift >> compose) <| Some 4
 lift (mult 3) |> (fun f -> compose f (Some 4))
